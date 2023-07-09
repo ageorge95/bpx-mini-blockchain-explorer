@@ -9,7 +9,7 @@ from openpyxl import Workbook
 # USER INPUT
 # ######################################
 w3 = Web3(HTTPProvider('http://127.0.0.1:8545'))
-blockchain_address = ""
+blockchain_address = input('What ethereum address should I scan ?\n\t_')
 
 # ######################################
 # SCRIPT
