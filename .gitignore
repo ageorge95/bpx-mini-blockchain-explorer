@@ -1,1 +1,5 @@
 /.idea
+/activate.bat
+/venv
+/data.json
+/export.xlsx
