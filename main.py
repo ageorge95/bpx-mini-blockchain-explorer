@@ -51,13 +51,15 @@ for block_number in range(latest_blocknumber):
             if transaction['from'] == blockchain_address:
                 tx_dictionary[blockchain_address][-1]['transactions'].append({'from': transaction['from'],
                                                                               'to': transaction['to'],
-                                                                              'value': transaction['value']})
+                                                                              'value': -transaction['value']})
                 transactions_found += 1
+        withdrawals_found = 0
         for withdrawal in block.withdrawals:
             if withdrawal.address == blockchain_address:
                 tx_dictionary[blockchain_address][-1]['withdrawals'].append({'amount': withdrawal.amount})
+                withdrawals_found == 1
 
-        print(f'Block cached; Found {transactions_found} transactions')
+        print(f'Block cached; Found {transactions_found} transactions and {withdrawals_found} withdrawals')
     else:
         print('Block already cached')
 
@@ -75,7 +77,7 @@ for data in tx_dictionary[blockchain_address]:
                                'transaction',
                                transaction['from'],
                                transaction['to'],
-                               transaction['value']/denominator])
+                               transaction['value']/denominator/denominator])
     if data['withdrawals']:
         for withdrawal in data['withdrawals']:
             table_data.append([data['block_number'],
